@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+:root {
+  /* 夜空主题色与渐变色盘 */
+  --night-deep: #0b0e2a;
+  --sky-periwinkle: #C9DBF8; /* 深长春花蓝 */
+  --sky-lilac: #D8D1F3;      /* 柔紫罗兰 */
+  --sky-blush: #F5E8FF;      /* 微粉霞光 */
+
+  /* 全站前景与背景（夜景） */
+  --background: var(--night-deep);
+  --foreground: #ffffff;
+
+  /* 组件色（在夜景上适配） */
+  --salt-white: rgba(255,255,255,0.06); /* 卡片/导航微透明底 */
+  --deep-sea: #ffffff;                  /* 字体主色改为白色 */
+  --shell-pink: rgba(245,232,255,0.18); /* 悬浮柔粉映光 */
+  --sunset-gold: #FFD700;               /* 强调色保留 */
+  --neutral-gray: rgba(255,255,255,0.75); /* 次级文本为柔白 */
+}
+
+/* Tailwind v4 自定义主题变量（使用 @theme inline 语法） */
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  /* 映射主题色为 Tailwind 令牌 */
+  --color-salt-white: var(--salt-white);
+  --color-deep-sea: var(--deep-sea);
+  --color-shell-pink: var(--shell-pink);
+  --color-sunset-gold: var(--sunset-gold);
+  --color-neutral-gray: var(--neutral-gray);
+  /* 常用尺寸与阴影（可按需扩展）*/
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* 夜景固定，不随系统深浅模式变化 */
+
+html, body { height: 100%; }
+body {
+  position: relative;
+  min-height: 100vh;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  /* Monet 风格的梦幻夜空：层叠渐变 + 柔光云雾 */
+  background:
+    radial-gradient(120vmax 80vh at 50% -10%, rgba(201,219,248,0.35), rgba(216,209,243,0.20) 40%, rgba(245,232,255,0.12) 70%, var(--night-deep) 80%),
+    linear-gradient(180deg, var(--night-deep), var(--night-deep));
+  background-attachment: fixed;
+}
+
+/* 画布细纹理：柔和交叉条纹模拟油画布质感 */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 2px, rgba(0,0,0,0.03) 2px 4px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 2px, rgba(0,0,0,0.03) 2px 4px);
+  mix-blend-mode: soft-light;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* 星光层：微弱闪烁的星点 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(1px 1px at 30% 25%, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(1px 1px at 55% 12%, rgba(255,255,255,0.75), transparent 60%),
+    radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(1px 1px at 85% 20%, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(2px 2px at 40% 8%, rgba(255,255,255,0.9), transparent 64%),
+    radial-gradient(2px 2px at 15% 40%, rgba(255,255,255,0.9), transparent 64%),
+    radial-gradient(2px 2px at 80% 45%, rgba(255,255,255,0.9), transparent 64%);
+  background-blend-mode: screen;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+/* 云雾层：柔光扩散，营造印象派笔触的氤氲感 */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60vmax 40vmax at 50% -10%, rgba(245,232,255,0.25), transparent 60%),
+    radial-gradient(40vmax 30vmax at 10% 0%, rgba(216,209,243,0.15), transparent 60%),
+    radial-gradient(40vmax 30vmax at 90% 0%, rgba(201,219,248,0.15), transparent 60%);
+  filter: blur(14px);
+  opacity: 0.9;
+  z-index: -2;
+}
+
+/* 辅助类：细线分割与可访问性 */
+.divider {
+  border-bottom: 1px solid rgba(255,255,255,0.22);
+}
+
+.sr-skiplink {
+  position: absolute;
+  left: -999px;
+  top: -999px;
+}
+.sr-skiplink:focus {
+  left: 16px;
+  top: 16px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+}
+
+/* 导航玻璃层 */
+.nav-glass {
+  backdrop-filter: blur(10px) saturate(115%);
+  -webkit-backdrop-filter: blur(10px) saturate(115%);
+  background: var(--salt-white);
+  border-bottom: none;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+}
+
+/* 玻璃卡片与悬浮发光 */
+.glass-card {
+  background: var(--salt-white);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  border: none;
+  box-shadow: var(--shadow-card), 0 12px 40px rgba(0,0,0,0.35);
+  transition: background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.hover-glow:hover {
+  background: rgba(245,232,255,0.25);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.25), 0 18px 50px rgba(245,232,255,0.25), 0 10px 30px rgba(0,0,0,0.45);
+  transform: translateY(-2px);
+}
+
+/* 标题微光增强可读性 */
+.heading-glow {
+  text-shadow: 0 1px 12px rgba(245,232,255,0.24), 0 2px 6px rgba(0,0,0,0.35);
+}
+
+/* 头像柔光效果 */
+.avatar-glow {
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.25), 0 8px 24px rgba(245,232,255,0.30);
+}
+
+/* 月亮光晕：暖金色的柔光环 */
+.moon-glow {
+  box-shadow:
+    0 0 24px rgba(255, 215, 0, 0.45),
+    0 0 64px rgba(255, 215, 0, 0.35),
+    0 0 100px rgba(255, 215, 0, 0.25);
+}
+
+/* 表单玻璃输入与高亮按钮 */
+.glass-input {
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  outline: none;
+  transition: box-shadow 160ms ease;
+}
+.glass-input::placeholder { color: rgba(255,255,255,0.65); }
+.glass-input:focus {
+  box-shadow: 0 0 0 3px rgba(245,232,255,0.25);
+}
+
+.btn-gold {
+  background: linear-gradient(180deg, #FFD700, #e1c100);
+  color: #0b0e2a; /* 深夜底色上的可读文本色 */
+  border: none;
+}
+.btn-glow:hover {
+  box-shadow: 0 12px 30px rgba(255,215,0,0.35);
+  filter: brightness(1.05);
+}
+
+/* 月亮头像下方云层效果容器与伪元素 */
+.moon { position: relative; display: inline-block; z-index: 0; }
+.moon::after {
+  content: "";
+  position: absolute;
+  bottom: -20px; /* 云在月亮下方 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 100px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.3) 40%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent 100%
+  );
+  filter: blur(40px);
+  opacity: 0.8;
+  z-index: -1;
+}

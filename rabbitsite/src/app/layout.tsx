@@ -18,7 +18,7 @@ const notoSansSC = Noto_Sans_SC({
 export const metadata: Metadata = {
   title: "修修 Xiuqi Li — CS-PhD & 艺术创作者",
   description:
-    "作品展示、研究介绍、文集与联系合作。教育类游戏 / UI·UX / AIGC / 平面设计",
+    "作品展示、研究介绍、文集与联系合作。教育类游戏 / UI·UX / AIGC / 平面设计 · Designer & Researcher focused on AI Design, Game-based Learning and Human-Centered Interaction.",
   metadataBase: process.env.NEXT_PUBLIC_SITE_URL
     ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
     : undefined,

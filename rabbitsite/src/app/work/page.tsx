@@ -25,16 +25,27 @@ export default function WorkPage() {
             title: "AI播客《西游电台》（ListenHub/Coze/NotebookLM）",
             summary: "播客制作流程与 AI 工具链整合。",
           },
-        ].map((item) => (
-          <a
-            key={item.slug}
-            href={`/work/${item.slug}`}
-            className="block rounded-lg p-6 shadow-[var(--shadow-card)] glass-card hover-glow"
-          >
-            <h2 className="text-lg font-medium text-deep-sea">{item.title}</h2>
-            <p className="text-neutral-gray">{item.summary}</p>
-          </a>
-        ))}
+        ].map((item) => {
+          const externalUrl =
+            item.slug === "ai-podcast-journey-to-the-west"
+              ? "https://a5tokq5gsr.feishu.cn/wiki/NiQFwSirFimbMLkcpW6c4Q8zn8f"
+              : item.slug === "aigc-dynamic-poster"
+              ? "https://a5tokq5gsr.feishu.cn/wiki/PPzWwzGIJiOSXDknlzwcjOCMn8d"
+              : null;
+          const href = externalUrl ?? `/work/${item.slug}`;
+          return (
+            <a
+              key={item.slug}
+              href={href}
+              target={externalUrl ? "_blank" : undefined}
+              rel={externalUrl ? "noopener noreferrer" : undefined}
+              className="block rounded-lg p-6 shadow-[var(--shadow-card)] glass-card hover-glow"
+            >
+              <h2 className="text-lg font-medium text-deep-sea">{item.title}</h2>
+              <p className="text-neutral-gray">{item.summary}</p>
+            </a>
+          );
+        })}
       </div>
     </section>
   );

@@ -19,7 +19,9 @@ export const metadata: Metadata = {
   title: "修修 Xiuqi Li — CS-PhD & 艺术创作者",
   description:
     "作品展示、研究介绍、文集与联系合作。教育类游戏 / UI·UX / AIGC / 平面设计",
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: process.env.NEXT_PUBLIC_SITE_URL
+    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+    : undefined,
 };
 
 export default function RootLayout({

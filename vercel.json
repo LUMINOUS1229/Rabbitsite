@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "builds": [
-    { "src": "rabbitsite/package.json", "use": "@vercel/next" }
-  ],
-  
-}

@@ -28,7 +28,7 @@ export default function WorkDetail({ params }: { params: { slug: string } }) {
   if (!work) return notFound();
   return (
     <article className="space-y-4 glass-card rounded-lg p-6">
-      <h1 className="text-3xl font-semibold text-deep-sea heading-glow">{work.title}</h1>
+      <h1 className="text-3xl font-bold font-serif bg-clip-text text-transparent bg-gradient-to-r from-white via-[#c0d4ff] to-white heading-glow">{work.title}</h1>
       <p className="text-neutral-gray">{work.body}</p>
     </article>
   );

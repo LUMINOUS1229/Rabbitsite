@@ -34,7 +34,7 @@ export default function Home() {
         className={`space-y-4 transition-all duration-1000 ease-out mx-auto max-w-3xl text-center ${reveal ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1 pointer-events-none'}`}
         style={{ transitionDelay: reveal ? '120ms' : '0ms' }}
       >
-        <h1 className="text-4xl font-semibold text-deep-sea">修修 | 梦境实验室 Dream Lab</h1>
+        <h1 className="text-4xl font-bold font-serif bg-clip-text text-transparent bg-gradient-to-r from-white via-[#c0d4ff] to-white">修修 | 梦境实验室 Dream Lab</h1>
         <p className="text-neutral-gray leading-relaxed">
           你好！我是修修，艺术设计与计算机背景的设计师与研究员，关注以人为本的交互体验与跨媒介创作，希望为世界创造更多美好的事物。
         </p>

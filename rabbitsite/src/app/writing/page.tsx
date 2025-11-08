@@ -1,7 +1,7 @@
 export default function WritingPage() {
   return (
     <section className="space-y-6">
-      <h1 className="text-3xl font-semibold text-deep-sea">Writing & Drawing</h1>
+      <h1 className="text-3xl font-bold font-serif bg-clip-text text-transparent bg-gradient-to-r from-white via-[#c0d4ff] to-white">Writing & Drawing</h1>
       <p className="text-neutral-gray">从公众号「Cos兔」抽3篇做摘要占位。</p>
       <ul className="space-y-3">
         {[

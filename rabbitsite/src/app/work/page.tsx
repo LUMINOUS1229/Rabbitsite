@@ -1,7 +1,7 @@
 export default function WorkPage() {
   return (
     <section className="space-y-6">
-      <h1 className="text-3xl font-semibold text-deep-sea">作品 Work</h1>
+      <h1 className="text-3xl font-bold font-serif bg-clip-text text-transparent bg-gradient-to-r from-white via-[#c0d4ff] to-white">作品 Work</h1>
       <p className="text-neutral-gray">精选与全部项目的集合。</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {[

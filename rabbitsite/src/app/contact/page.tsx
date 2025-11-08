@@ -1,7 +1,7 @@
 export default function ContactPage() {
   return (
     <section className="space-y-6">
-      <h1 className="text-3xl font-semibold text-deep-sea">联系 Contact</h1>
+      <h1 className="text-3xl font-bold font-serif bg-clip-text text-transparent bg-gradient-to-r from-white via-[#c0d4ff] to-white">联系 Contact</h1>
       <p className="text-neutral-gray">填写表单以联系合作（Formspree）。</p>
       <form
         action="https://formspree.io/f/yourFormId"
